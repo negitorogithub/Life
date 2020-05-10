@@ -4,6 +4,8 @@ using System.Collections;
 public class Movable : MonoBehaviour, IMovable
 {
     Rigidbody rigidBody;
+    IMasterData masterData;
+
 
     public MovingState MovingState { get; set; }
 

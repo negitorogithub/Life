@@ -1,12 +1,21 @@
 ﻿using UnityEngine;
-using UnityEditor;
-
-public class MasterData : IMasterData
+public class MasterData : MonoBehaviour,IMasterData
 {
-    public float UnitHp { get; set; }
+    [field:SerializeField]
+    public float UnitHp { get; set; }   
+
+    [field: SerializeField]
     public float Speed { get; set; }
+
+    [field: SerializeField]
     public float FeedHpIncrease { get; set; }
+
+    [field: SerializeField]
     public float LivingHpDecreasePerSecond { get; set; }
+
+    [field: SerializeField]
     public float MovingHpDecreasePerMeter { get; set; }
+
+    [field: SerializeField]
     public float ReproductionHpDecrease { get; set; }
 }
