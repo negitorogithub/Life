@@ -27,15 +27,14 @@ public class HpLogic : MonoBehaviour
     {
         hpHolder.hp -= LivingHpDecrease(Time.deltaTime);
         hpHolder.hp -= MovingHpDecrease(rigidBody.velocity.magnitude * Time.deltaTime);
-        Debug.Log(hpHolder.hp);
     }
 
-    float LivingHpDecrease(float deltaTime)
+    public float LivingHpDecrease(float deltaTimeSecond)
     {
-        return masterData.LivingHpDecreasePerSecond * deltaTime;
+        return masterData.LivingHpDecreasePerSecond * deltaTimeSecond;
     }   
 
-    float MovingHpDecrease(float deltaMeter)
+    public float MovingHpDecrease(float deltaMeter)
     {
         return masterData.MovingHpDecreasePerMeter * deltaMeter;
     }

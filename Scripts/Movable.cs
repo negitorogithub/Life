@@ -30,6 +30,7 @@ public class Movable : MonoBehaviour, IMovable
 
     void FixedUpdate()
     {
+        //TODO:Stateパターンでもっときれいに書けるかも
         switch (StateReactive.Value)
         {
             case MovingState.MOVING_2_TARGET:
