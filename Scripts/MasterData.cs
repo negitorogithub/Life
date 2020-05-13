@@ -18,4 +18,7 @@ public class MasterData : MonoBehaviour,IMasterData
 
     [field: SerializeField]
     public float ReproductionHpDecrease { get; set; }
+
+    [field: SerializeField]
+    public float RandomMoveIntervalSecond { get; set;}
 }

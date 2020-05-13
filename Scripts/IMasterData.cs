@@ -8,4 +8,5 @@
     float LivingHpDecreasePerSecond { get; set; }
     float MovingHpDecreasePerMeter { get; set; }
     float ReproductionHpDecrease { get; set; }
+    float RandomMoveIntervalSecond { get; set; }
 }

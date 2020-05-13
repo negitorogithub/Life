@@ -1,4 +1,7 @@
-﻿public interface IEats
+﻿using UniRx;
+using UnityEngine;
+
+public interface IEats
 {
-    void Eat();
+    Subject<GameObject> EatedSubject { get; set; }
 }
