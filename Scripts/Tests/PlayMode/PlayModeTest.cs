@@ -8,6 +8,7 @@ using UnityEngine.TestTools;
 
 namespace Tests
 {
+    //TODO: ファイル分割
     public class PlayModeTest
     {
         const string testSceneName = "TestScene";
@@ -49,9 +50,11 @@ namespace Tests
         [UnityTest]
         public IEnumerator UnitComponetsExistence()
         {
-            Assert.That(unitObject.GetComponent<HpHolder>() != null);
-            Assert.That(unitObject.GetComponent<IMovable>() != null);
-            Assert.That(unitObject.GetComponent<IEats>() != null);
+            Assert.That(unitObject.GetComponent<HpHolder>(),Is.Not.Null);
+            Assert.That(unitObject.GetComponent<IMovable>(), Is.Not.Null);
+            Assert.That(unitObject.GetComponent<IEats>(), Is.Not.Null);
+            Assert.That(unitObject.GetComponent<IReproducible>(), Is.Not.Null);
+            Assert.That(unitObject.GetComponent<UnitParams>(), Is.Not.Null);
             yield return null;
         }
 
@@ -320,5 +323,23 @@ namespace Tests
             Assert.That(hpDelta, Is.EqualTo(expectedHpDelta));
             yield return null;
         }
+
+        [UnityTest]
+        public IEnumerator UnitReproducible()
+        {
+            var reproducible = unitObject.GetComponent<IReproducible>();
+            var hp = unitObject.GetComponent<HpHolder>().hp;
+            var hasReproduced = false;
+            reproducible.reproducedSubject.Subscribe(_ => hasReproduced = true);
+            reproducible.Reproduce();
+            var hp_ = unitObject.GetComponent<HpHolder>().hp;
+            var hpDelta = hp - hp_;
+            var expectedHpDelta = masterData.ReproductionHpDecrease;
+            Assert.That(hpDelta, Is.EqualTo(expectedHpDelta));
+            Assert.That(hasReproduced);
+            yield return null;
+        }
+
+
     }
 }

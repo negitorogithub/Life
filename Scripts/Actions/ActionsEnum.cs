@@ -1,0 +1,9 @@
+﻿public enum ActionsEnum
+{
+    MOVE_2_NEAREST_FEED,
+    MOVE_AWAY_FROM_NEAREST_FEED,
+    MOVE_RANDOMLY,
+    STOP,
+    REPRODUCE
+}
+

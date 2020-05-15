@@ -5,6 +5,7 @@ using System;
 public class HpLogic : MonoBehaviour
 {
     public GameObject IEatsObject;
+    public GameObject IReproducibleObject;
     public GameObject IMasterDataObject;
     public HpHolder hpHolder;
     private Rigidbody rigidBody;
@@ -19,9 +20,10 @@ public class HpLogic : MonoBehaviour
 
         IEats iEats = IEatsObject.GetComponent<IEats>() ?? throw new Exception("IEatsはIEatsを継承してください");
         iEats.EatedSubject.Subscribe(
-            _ => hpHolder.hp += masterData.FeedHpIncrease);
+            _ => hpHolder.hp += masterData.FeedHpIncrease); 
+        IReproducible reproducible = IReproducibleObject.GetComponent<IReproducible>() ?? throw new Exception("IReproducibleObjectはIReproducibleを継承してください");
+        reproducible.reproducedSubject.Subscribe(_ => hpHolder.hp -= masterData.ReproductionHpDecrease);
     }
-
     // Update is called once per frame
     void Update()
     {

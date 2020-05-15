@@ -21,4 +21,6 @@ public class MasterData : MonoBehaviour,IMasterData
 
     [field: SerializeField]
     public float RandomMoveIntervalSecond { get; set;}
+    [field: SerializeField]
+    public float UnitNearestSearchColliderRadius { get ; set ; }
 }
