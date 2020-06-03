@@ -13,10 +13,28 @@ public class CFeedNear : MonoBehaviour, IConditionComponent
     [NonSerialized]
     public UnitParams unitParams;
 
+    [NonSerialized]
+    internal UnitParams unitParams_;
+
+    [NonSerialized]
+    internal float a;
+
+
     private List<GameObject> feedObjectsList = new List<GameObject>();
+
+    private void Awake()
+    {
+
+    }
+
+    private void Start()
+    {
+        
+    }
 
     private void Update()
     {
+
         feedObjectsList = feedObjectsList.Where(obj => obj != null).ToList();
         satisfies = feedObjectsList.Count >= 1;
         if (satisfies)

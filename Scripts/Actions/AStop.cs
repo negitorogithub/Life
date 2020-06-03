@@ -6,6 +6,6 @@ public class AStop : MonoBehaviour, IActionComponent
 
     public void do_()
     {
-        throw new System.NotImplementedException();
+        movable.Stop();
     }
 }

@@ -1,23 +1,28 @@
 ﻿using System;
+using UniRx;
 using UnityEngine;
 
 public class ComponentBuilder : MonoBehaviour
 {
-    IMovable movable;
-    public GameObject movableObject;
-    IReproducible reproducible;
-    public GameObject reproducibleObject;
-    public HpHolder hpHolder;
-    public UnitParams unitParams;
-    IMasterData masterData;
-    public GameObject masterDataObject;
+    private IMovable movable;
+    [SerializeField]
+    private GameObject movableObject;
+    private IReproducible reproducible;
+    [SerializeField]
+    private GameObject reproducibleObject;
+    [SerializeField]
+    private HpHolder hpHolder;
+    [SerializeField]
+    private UnitParams unitParams;
+    private IMasterData masterData;
+    [SerializeField]
+    private GameObject masterDataObject;
 
-    private void Start()
+    private void Awake()
     {
         movable = movableObject.GetComponent<IMovable>() ?? throw new Exception();
         reproducible = reproducibleObject.GetComponent<IReproducible>() ?? throw new Exception();
         masterData = masterDataObject.GetComponent<IMasterData>() ?? throw new Exception();
-
     }
 
     public ILogicComponent FromLogic(ILogic logic)
@@ -93,18 +98,27 @@ public class ComponentBuilder : MonoBehaviour
                     var component = gameObject.AddComponent<CFeedNear>();
                     component.collider = collider;
                     component.unitParams = unitParams;
+                    component.unitParams_ = unitParams;
+                    component.a = 2;
                     return component;
                 }
             case ConditionsEnum.HP_LESS_THAN:
                 {
                     var component = gameObject.AddComponent<CHpLessThan>();
                     component.hpHolder = hpHolder;
+                    component.border = condition.param;
                     return component;
                 }
             case ConditionsEnum.HP_GREATER_THAN:
                 {
                     var component = gameObject.AddComponent<CHpGreaterThan>();
                     component.hpHolder = hpHolder;
+                    component.border = condition.param;
+                    return component;
+                }
+            case ConditionsEnum.DEFAULT:
+                {
+                    var component = gameObject.AddComponent<CDefault>();
                     return component;
                 }
             default:

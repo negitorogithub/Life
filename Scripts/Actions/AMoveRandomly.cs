@@ -6,6 +6,6 @@ public class AMoveRandomly : MonoBehaviour, IActionComponent
 
     public void do_()
     {
-        throw new System.NotImplementedException();
+        movable.MoveRandomly();
     }
 }

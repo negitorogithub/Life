@@ -2,9 +2,10 @@
 
 public class AReproduce : MonoBehaviour, IActionComponent
 {
-    internal IReproducible reproducible;
+    public IReproducible reproducible;
 
     public void do_()
     {
+        reproducible.Reproduce();
     }
 }

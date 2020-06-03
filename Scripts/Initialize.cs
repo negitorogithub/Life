@@ -1,8 +1,4 @@
-﻿using Assets.Scripts;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Initialize : MonoBehaviour
 {
@@ -17,18 +13,34 @@ public class Initialize : MonoBehaviour
 
     private void GenerateLogics()
     {
-        var logic = new Logic();
-        var condition = new Condition();
-        var action = new Action();
-        condition.conditionsEnum = ConditionsEnum.FEED_NEAR;
-        condition.param = 10;
-        action.actionsEnum = ActionsEnum.MOVE_2_NEAREST_FEED;
-        logic.condition = condition;
-        logic.action = action;
-
         logics = new Logics();
-        logics.List.Add(logic);
+        for (int i = 0; i < 3; i++)
+        {
+            var logic = RandomLogic.Next();
+            logics.List.Add(logic);
+            Debug.Log(logic);
+        }
 
+        /*
+        {
+            var condition = new Condition(ConditionsEnum.FEED_NEAR, 40);
+            var action = new Action(ActionsEnum.MOVE_2_NEAREST_FEED);
+            var logic = new Logic(condition, action);
+            logics.List.Add(logic);
+        }
+        {
+            var condition = new Condition(ConditionsEnum.HP_GREATER_THAN, 120);
+            var action = new Action(ActionsEnum.REPRODUCE);
+            var logic = new Logic(condition, action);
+            logics.List.Add(logic);
+        }
+        {
+            var condition = new Condition(ConditionsEnum.DEFAULT);
+            var action = new Action(ActionsEnum.STOP);
+            var logic = new Logic(condition, action);
+            logics.List.Add(logic);
+        }
+        */
         logicsComponent = gameObject.AddComponent<LogicsComponent>();
     }
 }

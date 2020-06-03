@@ -9,6 +9,7 @@ public class Movable : MonoBehaviour, IMovable
     IMasterData masterData;
     public ReactiveProperty<MovingState> StateReactive { get; set; }
     IObservable<long> intervalObservable;
+    [NonSerialized]
     public GameObject target;
     Vector3 randomYVector;
     void Awake()

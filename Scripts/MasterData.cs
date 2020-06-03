@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
-public class MasterData : MonoBehaviour,IMasterData
+public class MasterData : MonoBehaviour, IMasterData
 {
-    [field:SerializeField]
-    public float UnitHp { get; set; }   
+    [field: SerializeField]
+    public float UnitHp { get; set; }
 
     [field: SerializeField]
     public float Speed { get; set; }
@@ -20,7 +20,9 @@ public class MasterData : MonoBehaviour,IMasterData
     public float ReproductionHpDecrease { get; set; }
 
     [field: SerializeField]
-    public float RandomMoveIntervalSecond { get; set;}
+    public float RandomMoveIntervalSecond { get; set; }
     [field: SerializeField]
-    public float UnitNearestSearchColliderRadius { get ; set ; }
+    public float UnitNearestSearchColliderRadius { get; set; }
+    [field: SerializeField]
+    public float PopFeedIntervalSecond { get; set; }
 }

@@ -10,4 +10,5 @@
     float ReproductionHpDecrease { get; set; }
     float RandomMoveIntervalSecond { get; set; }
     float UnitNearestSearchColliderRadius { get; set; }
+    float PopFeedIntervalSecond { get; set; }
 }
