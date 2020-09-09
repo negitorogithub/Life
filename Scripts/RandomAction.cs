@@ -2,7 +2,7 @@
 
 public class RandomAction
 {
-    private static readonly Random random = new Random();
+    private static readonly Random random = RandomGlobal.random;
 
     public static IAction Next()
     {

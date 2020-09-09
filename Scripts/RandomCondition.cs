@@ -3,7 +3,7 @@ public class RandomCondition
 {
     private const int MinHp = 0;
     private const int DefaultHp = 100;
-    private static Random random = new Random();
+    private static readonly Random random = RandomGlobal.random;
 
     public static ICondition Next()
     {
